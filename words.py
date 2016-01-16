@@ -44,12 +44,12 @@ words = [
     (u'AFS', 3),
     (u'ARM', 5),
     (u'AUTOEXEC.BAT', 1),
-    (u'AlexMUD', 2),
+    (u'AlexMUD', 4),
     (u'Android', 7),
     (u'Arduino', 4),
-    (u'Arla', 6),
-    (u'BIOS', 4),
-    (u'BSD 4.3', 5),
+    (u'Arla', 7),
+    (u'BIOS', 6),
+    (u'BSD 4.3', 6),
     (u'Baltikumprojektet', 3),
     (u'Berkley Source Distribution', 3),
     (u'BitTorrent', 3),
@@ -68,7 +68,7 @@ words = [
     (u'ETLA', 5),
     (u'Fedora', 9),
     (u'Firefox', 6),
-    (u'FreeBSD', 9),
+    (u'FreeBSD', 10),
     (u'FreeType', 3),
     (u'GLFW', 6),
     (u'GNU on VMS', 2),
@@ -93,10 +93,10 @@ words = [
     (u'Linux', 6),
     (u'Linux', 2),
     (u'Mountain Dew', 4),
-    (u'NetBSD', 5),
+    (u'NetBSD', 8),
     (u'OSX', 9),
     (u'Open Source', 13),
-    (u'OpenBSD', 8),
+    (u'OpenBSD', 10),
     (u'OpenGL', 6),
     (u'OpenSSL', 7),
     (u'OpenType', 3),
@@ -116,19 +116,19 @@ words = [
     (u'SIP', 4),
     (u'SQL', 10),
     (u'Solaris', 6),
-    (u'Stacken', 12),
     (u'Stacken', 40),
     (u'Stackenföreläsning', 16),
     (u'Stackpointer', 5),
+    (u'Stackhack', 9),
     (u'Stockholm', 10),
     (u'Sun', 5),
-    (u'TCP/IP', 5),
+    (u'TCP/IP', 6),
     (u'THS', 8),
     (u'TLA', 5),
     (u'Tcl/Tk', 2),
     (u'Tekniska Högskolans Studentkår', 5),
     (u'The Art of Computer Programming', 2),
-    (u'Torsdag', 25),
+    (u'Torsdag', 20),
     (u'TreeMap', 5),
     (u'Tru64', 5),
     (u'TrueType', 3),
@@ -186,7 +186,8 @@ words = [
     (u'datorhall', 11),
     (u'demoprogrammering', 7),
     (u'device', 5),
-    (u'diskchassi', 5),
+    (u'diff', 8),
+    (u'diskchassi', 7),
     (u'diskuterar', 5),
     (u'docker', 7),
     (u'elixir', 6),
@@ -201,7 +202,7 @@ words = [
     (u'fork()', 4),
     (u'fprintf()', 4),
     (u'fulhack', 2),
-    (u'funktionell programmering', 3),
+    (u'funktionell programmering', 5),
     (u'fågelbur', 2),
     (u'git', 9),
     (u'github', 8),
@@ -271,6 +272,7 @@ words = [
     (u'packa', 5),
     (u'papegoja', 5),
     (u'parrot', 5),
+    (u'patch', 8),
     (u'pdf', 5),
     (u'pdp', 9),
     (u'perl', 6),
@@ -296,6 +298,7 @@ words = [
     (u'rtfm', 2),
     (u'ruby', 7),
     (u'rust', 7),
+    (u'räksmörgås', 11),
     (u'scheme', 5),
     (u'sed', 5),
     (u'segvara', 5),
@@ -315,6 +318,7 @@ words = [
     (u'swift', 5),
     (u'systemadministration', 8),
     (u'te', 5),
+    (u'terrabyte', 8),
     (u'textigenkänning', 5),
     (u'tiff', 5),
     (u'troff', 5),
@@ -330,12 +334,14 @@ words = [
     (u'vårmöte', 5),
     (u'web', 5),
     (u'whiteboard', 5),
+    (u'whitespace', 5),
     (u'wiki', 5),
     (u'www.Stacken.KTH.se', 17),
     (u'x86', 5),
     (u'xml', 5),
     (u'zones', 5),
     (u'zsh', 6),
+    (u'öppen källkod', 7),
 ]
 
 #bigsize = 1
@@ -352,14 +358,21 @@ allwords = [(w, s*20) for w, s in words] + \
            [(w, s*4) for w, s in words] + \
            [(w, s*4) for w, s in words] + \
            [(w, s*4) for w, s in words] + \
+           [(w, s*4) for w, s in words] + \
+           [(w, s*4) for w, s in words] + \
+           [(w, s*4) for w, s in words] + \
+           [(w, s*4) for w, s in words] + \
+           [(w, s*4) for w, s in words] + \
+           [(w, s*4) for w, s in words] + \
            [(w, s*4) for w, s in words]
 
-print "Making a cloud of %d words." % len(allwords)
+font = '/usr/share/fonts/sil-gentium-basic/GenBkBasB.ttf'
+print "Making a cloud of %d words (from %d) in %s" % (
+    len(allwords), len(words), font)
 
 s = 4 * bigsize
-wordcloud = WordCloud(width=60*s, height=200*s, max_font_size=18 * s,
-                      font_path='/usr/share/fonts/sil-gentium-basic/GenBkBasR.ttf',
-                      min_font_size=3*bigsize,
+wordcloud = WordCloud(width=60*s, height=200*s, max_font_size=16 * s,
+                      font_path=font, min_font_size=3*bigsize,
                       max_words=len(allwords), stopwords=[],
                       relative_scaling=0.8).fit_words(allwords)
 
